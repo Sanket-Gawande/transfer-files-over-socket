@@ -21,7 +21,7 @@ function App() {
 export const SocketContext = createContext({} as object);
 
 function SocketContextProvider({ children }: { children: ReactNode }) {
-  const [socket] = useState(io('http://localhost:1234'));
+  const [socket] = useState(io(import.meta.env.VITE_SERVER_URL));
   return <SocketContext.Provider value={socket}>
     {children}
   </SocketContext.Provider>

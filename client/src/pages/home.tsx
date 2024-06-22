@@ -12,7 +12,7 @@ function Home() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const socket = useContext(SocketContext) as any;
   const roomId = useRef(Math.random().toString(32).substring(2).toUpperCase()).current
-  const roomURL = useRef("http://localhost:1234/room/" + roomId).current
+  const roomURL = useRef(import.meta.env.VITE_SERVER_URL + '/room/' + roomId).current
   const navigation = useNavigate()
   useEffect(() => {
     socket.emit('join-room', { roomId, name: getBrowserInfo() })
